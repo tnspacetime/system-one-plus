@@ -6,7 +6,7 @@ from torch.nn import functional as F
 
 def fit_calibration(model, gates, differences):
     report = {"gate_records": len(gates), "preference_pairs": len(differences)}
-    # Small data cannot establish calibrated probabilities; preserve identity.
+    # Preserve identity calibration below the fitting threshold.
     if len(gates) >= 4 and len({label for _, label in gates}) == 2:
         z = torch.tensor([z for z, _ in gates], dtype=torch.float64)
         labels = torch.tensor([y for _, y in gates], dtype=torch.float64)

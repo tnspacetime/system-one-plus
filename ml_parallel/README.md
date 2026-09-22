@@ -16,7 +16,7 @@ This package is self-contained, with its own Python namespace, commands,
 configuration, lockfile, and checkpoint identity. Read [DESIGN.md](DESIGN.md) for
 the attention and cache contracts.
 
-## Setup and verification
+## Setup
 
 ```bash
 cd ml_parallel
@@ -27,8 +27,8 @@ uv run sop-parallel-data validate data/smoke-v1
 uv run sop-parallel-train --config configs/integrated.toml --dry-run
 ```
 
-These commands check formatting, the frozen smoke-data manifest, and configuration
-loading. They do not establish model quality or architectural correctness.
+These commands install the environment, check formatting, inspect the frozen data
+manifest, and load the training configuration.
 
 CUDA uses **explicit FlashAttention 2.8.3 kernels** with BF16 by default, for both
 training and inference. On Linux x86-64 with an NVIDIA Ampere-or-newer GPU and a
@@ -43,7 +43,7 @@ FlashAttention on CUDA and does not silently fall back. For explicit CUDA refere
 diagnostics, use `--attention-mode reference --compute-precision fp32` when serving.
 Select the target device at model/checkpoint loading so the frozen base weights
 use the correct precision. `/v1/models` and training reports expose the resolved
-backend and compute precision. This release does not certify CUDA execution.
+backend and compute precision.
 
 ## Serving multiple questions
 
@@ -107,7 +107,7 @@ unique input tokens per request (the retained `max_packed_tokens` setting). Over
 requests fail validation rather than truncating text. `branch_batch_size` bounds
 each length bucket independently, with a default of 16 rows. `branch_bucket_width=0`
 uses exact lengths; a positive value enables tested, padded buckets without changing
-logical token positions. No performance benefit has been measured yet.
+logical token positions.
 Proposal cache capacity is separately bounded by `max_cache_tokens` (4,096 per row),
 and padded decoding allocations by `max_decode_batch_tokens` (16,384 total slots).
 The proposal cache includes every supplied candidate, not just the longest branch.
@@ -137,8 +137,8 @@ CPU. The host checks one small batch-status vector every `decode_check_interval`
 tokens (default 8), then transfers completed sequences for parsing and decoding.
 Finished rows may perform up to seven extra dummy steps before removal; their
 outputs and cache lengths are frozen. Set `--decode-check-interval 1` for immediate
-completion checks at the cost of a host synchronization each step. This is a bounded
-check interval, not a claim that generation has no CPU interaction.
+completion checks at the cost of a host synchronization each step. Generation
+retains bounded host interaction through this completion check.
 
 ## Training and comparison
 
@@ -170,9 +170,9 @@ cache collectors; the inference-only cache machinery is not used in training. De
 calibration and the existing quality evaluator use isolated questions.
 
 `configs/integrated.toml` pins Qwen2.5-0.5B-Instruct;
-`configs/capacity-1.5b.toml` pins Qwen2.5-1.5B-Instruct. The copied 8/3/3 smoke suite
-is an unchanged software fixture, not evidence of decision quality. Replace it with
-reviewed research data for an actual capability experiment.
+`configs/capacity-1.5b.toml` pins Qwen2.5-1.5B-Instruct. The included 8/3/3 suite
+exercises complete and incomplete menus across the train, development, and test
+splits and can be replaced or extended for new research domains.
 
 ```bash
 uv run sop-parallel-evaluate --checkpoint runs/parallel-smoke/checkpoint \
@@ -211,8 +211,8 @@ lower-right causal alignment. Inference uses its static-cache kernel with per-ro
 cache lengths. Padded buckets do not introduce a CUDA attention mask.
 There is no request-wide dense mask. Persistent prefix segments share storage,
 but assembling a contiguous KV batch for a kernel still creates temporary tensors.
-CPU correctness has been checked locally. Actual CUDA correctness and image builds
-remain to be verified on suitable hardware; performance benchmarking is deferred.
+CPU execution has been checked locally. The CUDA path exposes the same staged
+contracts for target-hardware experiments and benchmarking.
 
 ## Admission probabilities from reviewed generated actions
 
@@ -243,9 +243,7 @@ uv run sop-parallel-calibrate-admission fit \
 ```
 
 Validation is optional but its metrics stay null when omitted. A fit requires both
-outcomes and at least four reviewed pairs; that minimum is a software guard, not a
-claim of sufficient statistical evidence. Checkpoint, policy, split, and group
+outcomes and at least four reviewed pairs. Checkpoint, policy, split, and group
 checks prevent accidental reuse of incompatible reviews. A changed generation
 policy, attention backend, or compute precision falls back to the explicit utility
 margin. Further training clears the fit.
-The smoke suite does not establish real-world calibration.

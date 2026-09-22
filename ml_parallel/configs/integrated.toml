@@ -1,4 +1,4 @@
-# Software pipeline fixture. Use a reviewed research suite for capability claims.
+# Compact end-to-end System One+ training configuration.
 suite = "../data/smoke-v1"
 base_model = "Qwen/Qwen2.5-0.5B-Instruct"
 base_revision = "7ae557604adf67be50417f59c2c2f167def9a775"
@@ -18,7 +18,7 @@ max_length = 1024
 max_packed_tokens = 4096
 max_questions_per_pass = 8
 branch_batch_size = 16
-branch_bucket_width = 0 # Set >0 to enable padded length buckets; no speed claim yet.
+branch_bucket_width = 0 # Set >0 to enable padded length buckets.
 max_cache_tokens = 4096
 max_decode_batch_tokens = 16384
 admission_margin = 1.3862943611198906

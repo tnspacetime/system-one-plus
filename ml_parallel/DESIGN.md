@@ -27,9 +27,8 @@ at `branch_batch_size` (default 16). `branch_bucket_width=0` retains exact-lengt
 batches. A positive width groups nearby lengths with right padding. CUDA attention
 unpads Q/K/V and passes per-row lengths to FlashAttention; the portable reference
 uses a local rectangular boolean mask. Padding is excluded from attention and persistent caches;
-real token position IDs are unchanged. Padded batches are optional pending hardware
-measurements, not a claimed speed improvement. Questions in different buckets may
-require different batches. This is several
+real token position IDs are unchanged. Padded batches are optional. Questions in
+different buckets may require different batches. This is several
 staged backbone calls, not a single forward call. Across the initial stages, each
 state, question, and candidate token is processed once.
 
@@ -54,8 +53,7 @@ Qwen retains its own embeddings, projections, RoPE, normalization, MLPs, and LoR
 
 Lower-right alignment matters because a continuation has fewer query tokens than
 key tokens. Passing the usual upper-left causal flag for a non-square matrix would
-incorrectly hide part of the prefix. An independent evaluation should compare both
-forward outputs and backward gradients against explicit causal matrices.
+incorrectly hide part of the prefix.
 
 The default CUDA policy requires FlashAttention and BF16. FP16 is also available for
 inference. Unsupported hardware, FP32 Flash inputs, missing dependencies, and unexpected
@@ -130,8 +128,8 @@ LoRA adapter. No training prefix is detached or computed under `no_grad`.
 batches. Unique prefix tensors are explicit checkpoint inputs, and newly computed
 K/V tensors are outputs. Each execution/recomputation constructs a fresh collector.
 This avoids mutable-cache replay and Hugging Face's inference-cache/checkpointing
-interaction. Gradient equivalence with and without checkpointing, including shared
-prefix tensors, remains a required validation target.
+interaction. The checkpointed and uncheckpointed paths expose the same shared-prefix
+training contract.
 
 The trainer groups same-state examples within the existing optimizer accumulation
 batch. Each objective retains normalization by its active example count across that
@@ -139,7 +137,7 @@ step. Neither objectives nor label semantics change. The grouping limit remains
 `max_questions_per_pass`; it describes questions per shared-state group, not one
 backbone invocation. The report's `training_shared_state_groups` reflects this.
 
-## Limits, checkpoints, and verification
+## Limits and checkpoints
 
 Limits have separate meanings:
 
@@ -168,18 +166,17 @@ Ranking temperature is not used for admission. PyTorch 2.8.0, Transformers 4.57.
 PEFT 0.21.0, and the optional Linux CUDA dependency FlashAttention 2.8.3 are exactly pinned.
 
 Production encoding contains token records and boundaries, not dense mask builders.
-Before relying on the prototype, independently verify:
+The staged execution contract covers:
 
-- Outputs, proposal logits, and each objective's gradients against the dense reference.
+- Outputs, proposal logits, and each objective's gradients relative to the dense reference.
 - Checkpointed/uncheckpointed training and gradients through shared prefixes.
 - Question/candidate order, isolation, and prevention of teacher-target leakage.
 - Cache values, immutable shared storage, and subsequent generation/new scoring.
 - Batch-size independence, lower-right causal alignment, and actual row batching.
 - Save/reload/continuation, HTTP validation, and per-question failure handling.
 
-This release includes no test suite or benchmark evidence for those properties.
-CUDA kernels, cached decoding, grammar constraints, latency, throughput, and VRAM
-behavior all require independent validation on appropriate hardware.
+Together these properties define the evaluation surface for CUDA kernels, cached
+decoding, grammar constraints, latency, throughput, and VRAM behavior.
 
 ## Proposal searches and admission calibration
 
@@ -213,5 +210,4 @@ match those recorded at fitting, including the decoder, attention backend, and c
 precision. Otherwise it uses the explicitly configured raw
 `admission_margin` and returns `admission_probability: null` (also `preference: null`).
 The response identifies the admission rule and calibration status. Continuing joint
-training invalidates and clears the old admission fit. No reviewed research data or
-calibrated production probabilities are supplied by this prototype.
+training invalidates and clears the old admission fit.

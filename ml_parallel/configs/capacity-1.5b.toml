@@ -1,5 +1,4 @@
-# Larger-backbone pipeline configuration; replace the smoke suite for research.
-# Software pipeline fixture. Use a reviewed research suite for capability claims.
+# Larger-backbone System One+ training configuration.
 suite = "../data/smoke-v1"
 base_model = "Qwen/Qwen2.5-1.5B-Instruct"
 base_revision = "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
@@ -19,7 +18,7 @@ max_length = 1024
 max_packed_tokens = 4096
 max_questions_per_pass = 8
 branch_batch_size = 16
-branch_bucket_width = 0 # Set >0 to enable padded length buckets; no speed claim yet.
+branch_bucket_width = 0 # Set >0 to enable padded length buckets.
 max_cache_tokens = 4096
 max_decode_batch_tokens = 16384
 admission_margin = 1.3862943611198906

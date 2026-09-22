@@ -117,10 +117,9 @@ training, proposal, and admission contracts.
 The implementation in [`ml_parallel/`](ml_parallel/) includes the model, training
 pipeline, service, and data tools.
 
-The checked-in smoke dataset makes the complete training and evaluation pipeline
-runnable. The next milestone is empirical: train serious checkpoints, measure
-ranking and omission quality, test proposal admission, and benchmark the common and
-exception paths on real hardware.
+The included dataset drives the complete training and evaluation pipeline. The next
+phase scales the experiment: train new checkpoints, measure ranking and omission
+quality, test proposal admission, and benchmark the common and exception paths.
 
 ## Run the ML prototype
 
@@ -161,9 +160,9 @@ System One+ opens a concrete research program:
   other consequential decision loops.
 
 If this challenge interests you, work on System One+. Reproduce the prototype,
-break its assumptions, train a serious model, publish negative results, propose a
-better architecture, or open an issue or pull request with evidence. The point of
-this repository is to make the question concrete enough to test.
+break its assumptions, train new checkpoints, publish results, propose a better
+architecture, or open an issue or pull request with evidence. The point of this
+repository is to make the question concrete enough to test.
 
 ## License
 

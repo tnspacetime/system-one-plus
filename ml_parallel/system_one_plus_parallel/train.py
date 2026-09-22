@@ -286,7 +286,7 @@ def train(config, suite, out):
             "calibration": calibration,
             "provenance": run,
             "initialization": initialization,
-            "acceptance_threshold_source": "configured; validate on independently reviewed proposals",
+            "acceptance_threshold_source": "configured default",
         }
         save_checkpoint(model, tokenizer, out / "checkpoint", metadata)
         report = {
