@@ -148,9 +148,15 @@ a:focus-visible {
   transform: scaleX(1);
 }
 
+.header-links {
+  display: flex;
+  justify-self: end;
+  align-items: center;
+  gap: 24px;
+}
+
 .header-index {
   display: inline-flex;
-  justify-self: end;
   align-items: center;
   gap: 10px;
   font-family: var(--mono);

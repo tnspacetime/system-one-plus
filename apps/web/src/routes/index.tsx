@@ -14,7 +14,7 @@ import { useEffect, useRef, useState } from "react";
 export const Route = createFileRoute("/")({ component: Home });
 
 const repositoryUrl = "https://github.com/tnspacetime/system-one-plus";
-const authorUrl = "https://x.com/__tuan____";
+const xUrl = "https://x.com/__tuan____";
 
 const researchQuestions = [
 	{
@@ -113,14 +113,24 @@ function SiteHeader() {
 				<a href="#applications">Cases</a>
 				<a href="#research">Research</a>
 			</nav>
-			<a
-				className="header-index"
-				href={repositoryUrl}
-				target="_blank"
-				rel="noreferrer"
-			>
-				GitHub <ArrowUpRight aria-hidden="true" />
-			</a>
+			<div className="header-links">
+				<a
+					className="header-index"
+					href={repositoryUrl}
+					target="_blank"
+					rel="noreferrer"
+				>
+					GitHub <ArrowUpRight aria-hidden="true" />
+				</a>
+				<a
+					className="header-index"
+					href={xUrl}
+					target="_blank"
+					rel="noreferrer"
+				>
+					X <ArrowUpRight aria-hidden="true" />
+				</a>
+			</div>
 		</header>
 	);
 }
@@ -148,9 +158,6 @@ function Hero() {
 			<div className="hero-meta reveal reveal-one">
 				<span>A research proposition</span>
 				<span>Working paper 00</span>
-				<a href={authorUrl} target="_blank" rel="noreferrer">
-					tnspacetime / 2026
-				</a>
 			</div>
 
 			<div className="hero-copy">
@@ -757,8 +764,8 @@ function ClosingSection() {
 					<a href={repositoryUrl} target="_blank" rel="noreferrer">
 						View the repository <ArrowUpRight aria-hidden="true" />
 					</a>
-					<a href={authorUrl} target="_blank" rel="noreferrer">
-						tnspacetime on X <ArrowUpRight aria-hidden="true" />
+					<a href={xUrl} target="_blank" rel="noreferrer">
+						X <ArrowUpRight aria-hidden="true" />
 					</a>
 				</div>
 			</div>
@@ -785,9 +792,6 @@ function SiteFooter() {
 			</div>
 			<div>
 				<span>Working proposition / 00</span>
-				<a href={authorUrl} target="_blank" rel="noreferrer">
-					tnspacetime / @__tuan____
-				</a>
 			</div>
 			<a href="#top">Back to top ↑</a>
 		</footer>
