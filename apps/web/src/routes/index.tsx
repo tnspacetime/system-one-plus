@@ -19,23 +19,13 @@ const xUrl = "https://x.com/__tuan____";
 const researchQuestions = [
 	{
 		index: "01",
-		title: "Detect the omission",
-		body: "Can a model distinguish a genuinely incomplete menu from an ordinary low-confidence decision?",
+		title: "Flag what may be missing",
+		body: "Can the system recognize that the supplied action menu may be incomplete?",
 	},
 	{
 		index: "02",
-		title: "Calibrate intervention",
-		body: "When should the system return a typed warning, and when is the supplied menu good enough?",
-	},
-	{
-		index: "03",
-		title: "Propose without drift",
-		body: "Can a proposal path surface useful missing actions without dissolving into unrestricted chat?",
-	},
-	{
-		index: "04",
-		title: "Preserve the fast path",
-		body: "Can scoring, omission detection, and selective repair share one trained system efficiently?",
+		title: "Surface what should be added",
+		body: "When needed, can it propose the action that belongs in the decision?",
 	},
 ];
 
@@ -713,7 +703,7 @@ function ResearchSection() {
 				<h2>
 					The prototype exists.
 					<br />
-					The hard questions remain.
+					The problem is now concrete.
 				</h2>
 				<p>
 					<a
@@ -724,9 +714,8 @@ function ResearchSection() {
 					>
 						This repository <ArrowUpRight aria-hidden="true" />
 					</a>{" "}
-					is an early research prototype—not a finished system. Its
-					architecture, training, calibration, evaluation, and systems questions
-					remain open.
+					is an executable prototype of System One+: flag what may be missing and,
+					when needed, surface what should be added.
 				</p>
 			</div>
 
@@ -748,7 +737,7 @@ function ClosingSection() {
 	return (
 		<section className="closing">
 			<div className="closing-grid" aria-hidden="true" />
-			<p className="eyebrow">An open research direction</p>
+			<p className="eyebrow">The next problem after System One</p>
 			<h2>
 				Work on
 				<br />
@@ -770,13 +759,12 @@ function ClosingSection() {
 				</div>
 			</div>
 			<div className="prototype-warning">
-				<span>Early research prototype / no guarantees included</span>
+				<span>Early research prototype / open architecture</span>
 				<p>
-					Only proceed if you enjoy sweating over architecture, testing
-					uncomfortable assumptions, and wondering whether the best action was
-					missing all along. The checked-in smoke data validates software paths;
-					it does not establish model quality, calibration, latency, or
-					production readiness.
+					Only proceed if you enjoy sweating over architecture, testing hard
+					assumptions, and wondering whether the best action was missing all
+					along. The architecture is here to be trained, challenged, and
+					improved.
 				</p>
 			</div>
 		</section>

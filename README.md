@@ -146,23 +146,14 @@ GPU.
 
 ## Open research
 
-System One+ opens a concrete research program:
+System One+ defines one research problem: build an efficient decision system that
+can flag when a supplied action menu may be incomplete and, when needed, surface
+what should be added—without giving up the fast, structured decisions of System
+One.
 
-- datasets where menus are complete, subtly incomplete, redundant, or adversarial;
-- metrics that separate ranking quality, omission detection, proposal quality, and
-  admission quality;
-- calibrated intervention policies with asymmetric costs;
-- better set representations and omission objectives;
-- bounded proposal mechanisms that surface useful actions without drifting into
-  chat;
-- real hardware measurements of the common and exception paths;
-- failure analysis in agent tools, infrastructure, fraud operations, safety, and
-  other consequential decision loops.
-
-If this challenge interests you, work on System One+. Reproduce the prototype,
-break its assumptions, train new checkpoints, publish results, propose a better
-architecture, or open an issue or pull request with evidence. The point of this
-repository is to make the question concrete enough to test.
+This repository provides an executable starting point. Work on System One+: test
+the idea, improve the prototype, or build a better architecture for the same core
+contract.
 
 ## License
 
