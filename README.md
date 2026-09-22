@@ -2,6 +2,11 @@
 
 > The menu is not the world.
 
+[Jev](https://typesafe.ai/) makes the case for System One models: fast, typed
+decisions with probabilities instead of autoregressive text. System One+ starts
+from that achievement and asks the next question: if software acts on Jev's
+scores, what happens when the supplied action menu is incomplete?
+
 System One+ is an open research proposal for decision systems that do more than
 select the best option they were given. It asks a harder question:
 
