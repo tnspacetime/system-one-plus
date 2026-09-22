@@ -10,13 +10,13 @@ incomplete and, when needed, surfaces what should be added?**
 
 This repository contains an executable research prototype of the architecture.
 
+**[Read the proposal and specification →](https://system-one-plus.tnspacetime.com)**
+
 ## Launch film
 
-[![Watch the System One+ launch film](apps/web/public/system-one-plus-launch-film-poster.png)](apps/web/public/system-one-plus-launch-film.mp4)
+https://github.com/user-attachments/assets/826b1bc7-460a-41ee-8d7a-e954e4aaacb9
 
-Click the poster to open the **2:53 launch film**, or use the direct
-[MP4](apps/web/public/system-one-plus-launch-film.mp4) and
-[caption file](apps/web/public/system-one-plus-launch-film.vtt).
+The **2:53 launch film** presents the argument in motion.
 
 ## The case
 
