@@ -1,4 +1,4 @@
-const DEFAULT_OG_IMAGE = "/og.png";
+const DEFAULT_OG_IMAGE = "/system-one-plus-social-card.png";
 const OG_IMAGE_WIDTH = "1200";
 const OG_IMAGE_HEIGHT = "630";
 
