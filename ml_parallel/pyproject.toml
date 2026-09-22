@@ -1,0 +1,54 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "system-one-plus-parallel-ml"
+version = "0.2.0"
+description = "One jointly trained model for action ranking, omission detection, and proposal"
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "accelerate>=1.15.0",
+  "peft==0.21.0",
+  "huggingface-hub>=0.34,<1",
+  "safetensors>=0.6",
+  "pydantic>=2.9",
+  "torch==2.8.0",
+  "transformers==4.57.6",
+]
+
+[project.optional-dependencies]
+serve = ["fastapi>=0.115", "uvicorn>=0.30"]
+cloud = ["modal==1.5.5"]
+flash = ["flash-attn==2.8.3; sys_platform == 'linux' and platform_machine == 'x86_64'"]
+
+[dependency-groups]
+dev = ["ruff>=0.12"]
+
+[project.scripts]
+sop-parallel-data = "system_one_plus_parallel.data:main"
+sop-parallel-train = "system_one_plus_parallel.train:main"
+sop-parallel-evaluate = "system_one_plus_parallel.evaluate:main"
+sop-parallel-serve = "system_one_plus_parallel.serve:main"
+sop-parallel-calibrate-admission = "system_one_plus_parallel.admission:main"
+sop-parallel-harvest = "system_one_plus_parallel.harvest:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["system_one_plus_parallel"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 110
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+
+# Static upstream metadata lets CPU-only hosts resolve the Linux CUDA extra.
+[[tool.uv.dependency-metadata]]
+name = "flash-attn"
+version = "2.8.3"
+requires-dist = ["torch", "einops"]
+
+[tool.uv.extra-build-dependencies]
+flash-attn = [{ requirement = "torch", match-runtime = true }, "packaging", "psutil", "ninja"]

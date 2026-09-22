@@ -1,0 +1,14 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "system-one-plus",
+	"compatibility_date": "2026-09-21",
+	"routes": [
+		{
+			"pattern": "system-one-plus.tnspacetime.com",
+			"custom_domain": true
+		}
+	],
+	"assets": {
+		"directory": "./.output/public"
+	}
+}

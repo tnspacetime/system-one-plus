@@ -1,0 +1,21 @@
+{
+  "name": "System One+",
+  "short_name": "S1+",
+  "description": "An open research specification for fast decision systems that can detect an incomplete action menu and propose what is missing.",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#faf8ee",
+  "background_color": "#faf8ee",
+  "display": "standalone"
+}

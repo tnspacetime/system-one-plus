@@ -1,0 +1,27 @@
+name: Parallel ML checks
+
+on:
+  push:
+    paths: ["ml_parallel/**", ".github/workflows/ml-parallel.yml"]
+  pull_request:
+    paths: ["ml_parallel/**", ".github/workflows/ml-parallel.yml"]
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ml_parallel
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.8.22"
+          enable-cache: true
+          cache-dependency-glob: "ml_parallel/uv.lock"
+      - run: uv python install 3.13
+      - run: uv sync --locked --extra serve --extra cloud
+      - run: uv run ruff format --check .
+      - run: uv run ruff check .
+      - run: uv run sop-parallel-data validate data/smoke-v1
+      - run: uv run sop-parallel-train --config configs/integrated.toml --dry-run

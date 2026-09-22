@@ -1,0 +1,30 @@
+# Larger-backbone pipeline configuration; replace the smoke suite for research.
+# Software pipeline fixture. Use a reviewed research suite for capability claims.
+suite = "../data/smoke-v1"
+base_model = "Qwen/Qwen2.5-1.5B-Instruct"
+base_revision = "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+device = "auto"
+dtype = "auto" # BF16 + required FlashAttention on CUDA; FP32 on CPU/MPS.
+attention_mode = "auto"
+decode_check_interval = 8
+lora_rank = 16
+head_dim = 128
+omission_heads = 4
+omission_layers = 2
+epochs = 3
+learning_rate = 0.0001
+accumulation_steps = 4
+max_state_tokens = 384
+max_length = 1024
+max_packed_tokens = 4096
+max_questions_per_pass = 8
+branch_batch_size = 16
+branch_bucket_width = 0 # Set >0 to enable padded length buckets; no speed claim yet.
+max_cache_tokens = 4096
+max_decode_batch_tokens = 16384
+admission_margin = 1.3862943611198906
+score_weight = 1.0
+omission_weight = 1.0
+generation_weight = 1.0
+acceptance_threshold = 0.8
+seed = 42

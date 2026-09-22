@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">System One Plus — The Menu Is Not the World</title>
+  <desc id="description">Social card for the System One Plus research proposal.</desc>
+  <defs>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0H0v30" fill="none" stroke="#101310" stroke-opacity=".075"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#faf8ee"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <circle cx="1050" cy="192" r="218" fill="#3453ff" opacity=".12"/>
+  <circle cx="965" cy="590" r="160" fill="#dfff43" opacity=".5"/>
+
+  <g transform="translate(72 58)">
+    <text x="0" y="24" fill="#101310" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="800" letter-spacing="-1">SYSTEM ONE</text>
+    <path d="M154 9h22v7h-22zM161.5 1.5h7v22h-7z" fill="#3453ff"/>
+  </g>
+  <text x="1128" y="82" text-anchor="end" fill="#101310" font-family="Courier New, monospace" font-size="15" letter-spacing="2">RESEARCH PROPOSITION / 00</text>
+
+  <g transform="translate(72 180)">
+    <text x="0" y="93" fill="#101310" font-family="Arial, Helvetica, sans-serif" font-size="108" font-weight="900" letter-spacing="-7">THE MENU IS</text>
+    <text x="0" y="202" fill="#3453ff" font-family="Arial, Helvetica, sans-serif" font-size="108" font-weight="900" letter-spacing="-7">NOT THE WORLD.</text>
+  </g>
+
+  <g transform="translate(925 110)">
+    <rect width="203" height="203" rx="42" fill="#3453ff"/>
+    <path d="M0 154.5h203M153.5 0v203" stroke="#101310" stroke-opacity=".16" stroke-width="2"/>
+    <text x="18" y="144" fill="#faf8ee" font-family="Arial, Helvetica, sans-serif" font-size="111" font-weight="900" letter-spacing="-11">S1</text>
+    <path d="M151 42h38v14h-38zM163 30h14v38h-14z" fill="#dfff43"/>
+  </g>
+
+  <path d="M72 486h1056" stroke="#101310" stroke-width="2"/>
+  <text x="72" y="540" fill="#101310" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700">QUESTION THE MENU. RECOMMEND WHAT IS MISSING. LET THE EVALUATOR SPEAK.</text>
+  <text x="72" y="582" fill="#101310" fill-opacity=".67" font-family="Courier New, monospace" font-size="16" letter-spacing="1.2">BEYOND CLOSED-SET MACHINE INTELLIGENCE</text>
+  <g transform="translate(1080 548)" fill="#101310">
+    <path d="M0 14h34v6H0zM28 0l22 17-22 17v-9H18v-16h10z"/>
+  </g>
+</svg>

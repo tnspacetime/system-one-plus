@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">System One Plus</title>
+  <rect width="64" height="64" rx="13" fill="#3453ff"/>
+  <path d="M0 48.5h64M47.5 0v64" stroke="#101310" stroke-opacity=".16"/>
+  <text x="6" y="45" fill="#faf8ee" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="900" letter-spacing="-3.5">S1</text>
+  <path d="M48 13h12v5H48zM51.5 9.5h5v12h-5z" fill="#dfff43"/>
+</svg>

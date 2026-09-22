@@ -1,0 +1,59 @@
+# macOS and editors
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# JavaScript / TanStack Start
+node_modules/
+.output/
+.wrangler/
+.vinxi/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Python / ML
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environment and secrets
+/jev.txt
+.env
+.env.*
+!.env.example
+
+# Generated model artifacts and local runs
+ml/runs/*
+ml/.cache/
+ml/data/local/
+ml/*.egg-info/
+ml/build/
+ml_parallel/runs/*
+ml_parallel/.cache/
+ml_parallel/data/local/
+ml_parallel/*.egg-info/
+ml_parallel/build/
+/ml_parallel/tests/
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+
+# Public release scope
+# Keep the local explorations, earlier implementations, and video project out of
+# the first release without deleting them from this workspace.
+/apps/*
+!/apps/web/
+/apps/web/.cta.json
+/apps/web/.cursorrules
+/apps/web/README.md
+/docs/
+/experiments/
+/ml/
+/video/
+/.github/workflows/ml.yml
