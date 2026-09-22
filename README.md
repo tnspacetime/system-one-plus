@@ -14,7 +14,7 @@ This repository contains an executable research prototype of the architecture.
 
 ## Launch film
 
-https://github.com/user-attachments/assets/826b1bc7-460a-41ee-8d7a-e954e4aaacb9
+https://github.com/user-attachments/assets/30ec01cd-ac6c-4394-a639-d58e928e09b9
 
 The **2:53 launch film** presents the argument in motion.
 
