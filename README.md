@@ -40,8 +40,8 @@ Closed-set decision systems assume that the useful action is already present:
 decide(state, [A, B, C]) → score(A), score(B), score(C)
 ```
 
-Now ask the uncomfortable question: **are you certain the menu is never missing a
-better action?**
+That ranking does not establish that the menu is complete. **Could a better
+action be missing?**
 
 A foundation-model evaluator is valuable precisely because its training carries
 knowledge beyond the person who wrote the menu. If it can judge the consequences
